@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       .h1-container{
+            display: flex;
+          align-items: center;
+          justify-content: center;
+            background-color:#161B22;
+            height: 200px;
+            width:200px;
+            color:whitesmoke;
+            text-align: center;
+            border-radius: 50%;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items:center;
+            padding-top:150px;
+            background: url(time.png);
+            
+        }
+        .outer-div{
+            background-color: rgba(128, 128, 128,0.3);
+            padding: 15px;
+            border-radius: 50%;
+            height: 300px;
+            width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .inner-div{
+            background-color: #161B22;  
+            border-radius: 50%;
+            height: 250px;
+            width: 250px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+       
+        .inner-div #time{
+            display: flex;
+            justify-content: center;
+            color:whitesmoke;
+        }
+        .inner-div #fulldate{
+            display: flex;
+            justify-content: center;
+            color:whitesmoke;
+        }
+  </style>
+</head>
+<body onload="bodyload()">
+<div class="outer-div">
+   <div class="inner-div">
+    <div class="inner-inner-div">
+        <h2 id="time"></h2>
+        <h3 id="fulldate"></h3>
+    </div>
+   </div>
+</div>
+
+    <script>
+        //this is for getting present time with counting seconds.
+        function getTime(){
+        let display=document.getElementById("time");
+        let now=new Date();
+        let realtime=now.toLocaleTimeString();
+         display.innerHTML=`${realtime}`;
+        }
+        function bodyload(){
+            setInterval(getTime,1000);
+        }
+
+
+        //this is for getting todays full date.
+        
+const time = document.getElementById("fulldate");
+
+const weeks = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+const months = ["Janu", "Feb", "Mar", "Appr", "May", "June", "Julay", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const date = new Date();
+const week = date.getDay(); //it has 0 index because today sunday.  the index value is changesd based on current day; it displays the index position of the days
+console.log(weeks[week]); //here we just asking the index number position contained the value like weeks[5] week=5 we storing the index value in the week variable.
+
+const month = date.getMonth(); //it displays the index position of months
+console.log(months[month]);
+const Dates = date.getDate();
+console.log(Dates);
+const year = date.getFullYear();
+console.log(year);
+const sentence = `${weeks[week]}, ${months[month]} ${Dates} ${year}`;
+console.log(sentence);
+time.innerHTML = `${sentence}`;
+
+    </script>
+</body>
+</html>
